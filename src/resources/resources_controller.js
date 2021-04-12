@@ -5,7 +5,7 @@ resources_controller.ESTADO_USUARIO = {
     INACTIVO: 0,
     NO_EXISTE: 1,
     DATOS_INCORRECTOS: 2,
-    EMAIL_EXISTE: 3,
+    EMAIL_EXISTE: -1,
 }
 
 

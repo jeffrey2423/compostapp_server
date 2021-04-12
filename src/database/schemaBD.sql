@@ -6,7 +6,7 @@ CREATE TABLE USERS(
     row_id SERIAL NOT NULL,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
-    password VARCHAR NOT NULL,
+    password TEXT NOT NULL,
     CONSTRAINT USERS_PK
         PRIMARY KEY (row_id),
     CONSTRAINT EMAIL_NO_REPEAT UNIQUE(email)

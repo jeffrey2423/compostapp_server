@@ -19,6 +19,9 @@ app.use((req, res, next) => {
 
 //ROUTES
 app.use(require('./middlewares/auth_token'));
+app.use('/compostapp/api/user', require('./routes/auth'));
+app.use('/compostapp/api/user/profile', require('./routes/user_profile'));
+app.use('/compostapp/api/user/profile', require('./routes/user_profile'));
 
 //SETTINGS
 app.set('port', process.env.PORT || config.SERVER_PORT);

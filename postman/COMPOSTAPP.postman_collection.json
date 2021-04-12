@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "8ffdd4bb-1727-41b1-84b3-c254451be0a5",
+		"name": "COMPOSTAPP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SIGNUP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmMTAwNF90cyI6IjIwMjAtMDQtMTFUMjA6MzM6NTkuMjM0WiIsImYxMDA0X2lkIjo1MiwiZjEwMDRfbm9tYnJlIjoiamVmZnJleSBhY3R1YWxpemFkbyIsImYxMDA0X2FwZWxsaWRvIjoicmlvcyIsImYxMDA0X2ZlY2hhX25hY2ltaWVudG8iOiIyMDIwLTAyLTA0VDA1OjAwOjAwLjAwMFoiLCJmMTAwNF9pZF9wcm9mZXNpb25fdDEwMDMiOjIsImYxMDA0X2VtYWlsIjoiYWN0dWFsaXphZG9AZ21haWwuY29tIiwiZjEwMDRfY2xhdmUiOiJmY2VhOTIwZjc0MTJiNWRhN2JlMGNmNDJiOGM5Mzc1OSIsImYxMDA0X2lkX3BlcmZpbF90MTAwMCI6MywiZjEwMDRfaW5kX2FjdGl2byI6MSwiaWF0IjoxNTg3Nzc5ODc4fQ.1VC_PSYCFeJ3A2BGZGkBMY0re8SNYDSuy9bH4y3sOUMeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0c19jcmVhdGlvbiI6IjIwMjEtMDQtMTJUMDc6Mzk6MzIuMzgzWiIsInJvd19pZCI6MSwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjIwMmNiOTYyYWM1OTA3NWI5NjRiMDcxNTJkMjM0YjcwIiwiaWF0IjoxNjE4MTk1NDE4fQ.AA0TDk7h7GfUaXtPzUMLV5wNzLqzR7kDT1-JlbCWi5A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"admin\",\r\n    \"email\":\"admin2@gmail.com\",\r\n    \"password\":\"202cb962ac59075b964b07152d234b70\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/compostapp/api/user/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"compostapp",
+						"api",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USER UPDATE PASSWORD",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmMTAwNF90cyI6IjIwMjAtMDQtMTFUMjA6MzM6NTkuMjM0WiIsImYxMDA0X2lkIjo1MiwiZjEwMDRfbm9tYnJlIjoiamVmZnJleSBhY3R1YWxpemFkbyIsImYxMDA0X2FwZWxsaWRvIjoicmlvcyIsImYxMDA0X2ZlY2hhX25hY2ltaWVudG8iOiIyMDIwLTAyLTA0VDA1OjAwOjAwLjAwMFoiLCJmMTAwNF9pZF9wcm9mZXNpb25fdDEwMDMiOjIsImYxMDA0X2VtYWlsIjoiYWN0dWFsaXphZG9AZ21haWwuY29tIiwiZjEwMDRfY2xhdmUiOiJmY2VhOTIwZjc0MTJiNWRhN2JlMGNmNDJiOGM5Mzc1OSIsImYxMDA0X2lkX3BlcmZpbF90MTAwMCI6MywiZjEwMDRfaW5kX2FjdGl2byI6MSwiaWF0IjoxNTg3Nzc5ODc4fQ.1VC_PSYCFeJ3A2BGZGkBMY0re8SNYDSuy9bH4y3sOUMeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0c19jcmVhdGlvbiI6IjIwMjEtMDQtMTJUMDc6Mzk6MzIuMzgzWiIsInJvd19pZCI6MSwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjIwMmNiOTYyYWM1OTA3NWI5NjRiMDcxNTJkMjM0YjcwIiwiaWF0IjoxNjE4MTk1NDE4fQ.AA0TDk7h7GfUaXtPzUMLV5wNzLqzR7kDT1-JlbCWi5A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"202cb962ac59075b964b07152d234b70\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/compostapp/api/user/profile/updatepassword/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"compostapp",
+						"api",
+						"user",
+						"profile",
+						"updatepassword",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USER UPDATE PROFILE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmMTAwNF90cyI6IjIwMjAtMDQtMTFUMjA6MzM6NTkuMjM0WiIsImYxMDA0X2lkIjo1MiwiZjEwMDRfbm9tYnJlIjoiamVmZnJleSBhY3R1YWxpemFkbyIsImYxMDA0X2FwZWxsaWRvIjoicmlvcyIsImYxMDA0X2ZlY2hhX25hY2ltaWVudG8iOiIyMDIwLTAyLTA0VDA1OjAwOjAwLjAwMFoiLCJmMTAwNF9pZF9wcm9mZXNpb25fdDEwMDMiOjIsImYxMDA0X2VtYWlsIjoiYWN0dWFsaXphZG9AZ21haWwuY29tIiwiZjEwMDRfY2xhdmUiOiJmY2VhOTIwZjc0MTJiNWRhN2JlMGNmNDJiOGM5Mzc1OSIsImYxMDA0X2lkX3BlcmZpbF90MTAwMCI6MywiZjEwMDRfaW5kX2FjdGl2byI6MSwiaWF0IjoxNTg3Nzc5ODc4fQ.1VC_PSYCFeJ3A2BGZGkBMY0re8SNYDSuy9bH4y3sOUMeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0c19jcmVhdGlvbiI6IjIwMjEtMDQtMTJUMDc6Mzk6MzIuMzgzWiIsInJvd19pZCI6MSwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjIwMmNiOTYyYWM1OTA3NWI5NjRiMDcxNTJkMjM0YjcwIiwiaWF0IjoxNjE4MTk1NDE4fQ.AA0TDk7h7GfUaXtPzUMLV5wNzLqzR7kDT1-JlbCWi5A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"admin\",\r\n    \"email\":\"admin@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/compostapp/api/user/profile/updateprofile/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"compostapp",
+						"api",
+						"user",
+						"profile",
+						"updateprofile",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIGNIN",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"admin@gmail.com\",\r\n    \"password\":\"202cb962ac59075b964b07152d234b70\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/compostapp/api/user/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"compostapp",
+						"api",
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

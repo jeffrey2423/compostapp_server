@@ -1,3 +1,3 @@
 module.exports = {
-    LOGIN: '/user/signin',
+    LOGIN: '/compostapp/api/user/signin',
 }
