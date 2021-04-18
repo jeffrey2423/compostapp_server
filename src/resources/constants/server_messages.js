@@ -69,5 +69,33 @@ module.exports = {
         id: 1025,
         description: "Contraseña actualizada con exito",
         status: "success"
+    },1026:{
+        id: 1026,
+        description: "Pregunta creada con exito",
+        status: "success"
+    },1027:{
+        id: 1027,
+        description: "Error al crear la pregunta",
+        status: "error"
+    },1028:{
+        id: 1028,
+        description: "Error al obtener las preguntas",
+        status: "error"
+    },1029:{
+        id: 1029,
+        description: "Respuesta guardada con exito",
+        status: "success"
+    },1030:{
+        id: 1030,
+        description: "Error al responder la pregunta",
+        status: "error"
+    },1031:{
+        id: 1031,
+        description: "Ha ocurrido un error, intenta de nuevo",
+        status: "error"
+    },1032:{
+        id: 1032,
+        description: "LikeOrDislike exitoso",
+        status: "success"
     },
 }
