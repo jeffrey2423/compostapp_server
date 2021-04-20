@@ -101,7 +101,7 @@ forumController.LikeOrDislike = async (req, res) => {
         await connection.connect(async (err, client, done) => {
             try {
                 let LikeOrDislikeQuery = {
-                    text: "select * from f_like_or_dislike($1)",
+                    text: "select * from f_like_or_dislike2($1)",
                     values: [req.body]
                 };
                 if (err) {
