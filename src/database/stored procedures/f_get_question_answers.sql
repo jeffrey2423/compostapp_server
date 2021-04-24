@@ -1,32 +1,41 @@
-CREATE OR REPLACE FUNCTION f_get_question_answers(in_row_id_question INTEGER, in_row_id_user INTEGER)
+CREATE OR REPLACE FUNCTION f_get_question_answers(in_row_id_question INTEGER)
    RETURNS TABLE(
-       ts_creation TIMESTAMP,
-       row_id INTEGER,
-       title TEXT,
-       content TEXT,
-       creator_id INTEGER,
-       creator_name TEXT
+       answer_ts_creation TIMESTAMP,
+       answer_row_id INTEGER,
+       answer_content TEXT,
+       answer_creator_row_id INTEGER,
+       answer_creator_name TEXT,
+       id_users_who_liked TEXT,
+       id_users_who_disliked TEXT,
+       likes_count INTEGER,
+       dislikes_count INTEGER
    ) AS
    $BODY$
 DECLARE
 	err_context TEXT;
+
+    REACTION_LIKE     INTEGER := 1;
+    REACTION_DISLIKE  INTEGER := 2;
 BEGIN
         RETURN QUERY
         SELECT  
-                ANSWERS.ts_creation::TIMESTAMP AS ts_creation,
-                ANSWERS.row_id::INTEGER AS row_id,
-				ANSWERS.content::TEXT AS content,
-                USERS.name::TEXT AS creator_name/*,
-				LIKES.answer_like::BOOLEAN AS answer_like,
-                LIKES.answer_unlike::BOOLEAN AS answer_unlike,
-				LIKES.user_id::INTEGER AS id_user_who_likes'*/
-            FROM ANSWERS
-            LEFT JOIN USERS
-            ON ANSWERS.user_id = USERS.row_id
-			LEFT JOIN LIKES
-			ON ANSWERS.row_id = LIKES.answer_id
-			WHERE ANSWERS.question_id = 1
-			ORDER BY ANSWERS.ts_creation;
+            ANSWERS.ts_creation::TIMESTAMP AS answer_ts_creation,
+            ANSWERS.row_id::INTEGER AS answer_row_id,
+            ANSWERS.content::TEXT AS answer_content,
+            USERS.row_id::INTEGER AS answer_creator_row_id,
+            USERS.name::TEXT AS answer_creator_name,
+            array_to_string(array(SELECT LIKES2.user_id FROM LIKES2 WHERE LIKES2.reaction = REACTION_LIKE AND LIKES2.answer_id = ANSWERS.row_id), ',' )::TEXT AS id_users_who_liked,
+            array_to_string(array(SELECT LIKES2.user_id FROM LIKES2 WHERE LIKES2.reaction = REACTION_DISLIKE AND LIKES2.answer_id = ANSWERS.row_id), ',' )::TEXT AS id_users_who_disliked,
+            COUNT(*) FILTER (WHERE LIKES2.reaction = REACTION_LIKE AND LIKES2.answer_id in (SELECT row_id FROM ANSWERS WHERE question_id = in_row_id_question))::INTEGER AS likes_count,
+            COUNT(*) FILTER (WHERE LIKES2.reaction = REACTION_DISLIKE AND LIKES2.answer_id in (SELECT row_id FROM ANSWERS WHERE question_id = in_row_id_question))::INTEGER AS dislikes_count
+        FROM ANSWERS
+        LEFT JOIN USERS
+        ON ANSWERS.user_id = USERS.row_id
+        LEFT JOIN LIKES2
+        ON ANSWERS.row_id = LIKES2.answer_id
+        WHERE LIKES2.answer_id in (SELECT row_id FROM ANSWERS WHERE question_id = in_row_id_question)
+        GROUP BY ANSWERS.row_id, USERS.name, USERS.row_id 
+        ORDER BY ANSWERS.ts_creation;
     EXCEPTION WHEN OTHERS THEN
         GET STACKED DIAGNOSTICS err_context = PG_EXCEPTION_CONTEXT;
         RAISE INFO 'Error Name:%',SQLERRM;

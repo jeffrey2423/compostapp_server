@@ -127,4 +127,37 @@ forumController.LikeOrDislike = async (req, res) => {
     }
 }
 
+forumController.GetQuestionAnswers = async (req, res) => {
+    try {
+        let query = {
+            text: `SELECT * FROM f_get_question_answers($1)`,
+            values: [req.query.questionid]
+        };
+        await connection.connect(async (err, client, done) => {
+            try {
+                if (err) {
+                    res.json(resources_controller.leerRecurso(1033, err.message));
+                } else {
+                    await client.query(query, async (err, results) => {
+                        if (err) {
+                            await client.query("ROLLBACK");
+                            res.json(resources_controller.leerRecurso(1033, err.message));
+                        } else {
+
+                            res.status(200).json(results.rows);
+
+                        }
+                    });
+                }
+            } finally {
+                done();
+                query = {};
+            }
+        });
+
+    } catch (error) {
+        res.json(resources_controller.leerRecurso(1033, error.message));
+    }
+}
+
 module.exports = forumController;

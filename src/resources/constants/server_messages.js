@@ -97,5 +97,9 @@ module.exports = {
         id: 1032,
         description: "LikeOrDislike exitoso",
         status: "success"
+    },1033:{
+        id: 1033,
+        description: "Error al obtener las respuestas de la pregunta seleccionada",
+        status: "error"
     },
 }
