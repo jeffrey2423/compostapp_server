@@ -16,4 +16,7 @@ router.route('/answerquestion')
 router.route('/likeordislike')
     .post(forumController.LikeOrDislike)
 
+router.route('/questionanswers?:questionid')
+    .get(forumController.GetQuestionAnswers)
+
 module.exports = router;

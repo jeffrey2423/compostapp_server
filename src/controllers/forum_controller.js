@@ -101,7 +101,7 @@ forumController.LikeOrDislike = async (req, res) => {
         await connection.connect(async (err, client, done) => {
             try {
                 let LikeOrDislikeQuery = {
-                    text: "select * from f_like_or_dislike($1)",
+                    text: "select * from f_like_or_dislike2($1)",
                     values: [req.body]
                 };
                 if (err) {
@@ -124,6 +124,39 @@ forumController.LikeOrDislike = async (req, res) => {
     } catch (error) {
         await client.query("ROLLBACK");
         res.json(resources_controller.leerRecurso(1031, error.message));
+    }
+}
+
+forumController.GetQuestionAnswers = async (req, res) => {
+    try {
+        let query = {
+            text: `SELECT * FROM f_get_question_answers($1)`,
+            values: [req.query.questionid]
+        };
+        await connection.connect(async (err, client, done) => {
+            try {
+                if (err) {
+                    res.json(resources_controller.leerRecurso(1033, err.message));
+                } else {
+                    await client.query(query, async (err, results) => {
+                        if (err) {
+                            await client.query("ROLLBACK");
+                            res.json(resources_controller.leerRecurso(1033, err.message));
+                        } else {
+
+                            res.status(200).json(results.rows);
+
+                        }
+                    });
+                }
+            } finally {
+                done();
+                query = {};
+            }
+        });
+
+    } catch (error) {
+        res.json(resources_controller.leerRecurso(1033, error.message));
     }
 }
 
